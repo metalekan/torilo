@@ -25,10 +25,28 @@ def add_user(users):
 def view_users(users):
     if not users:
         print("\nusers list is empty 🛒")
+        return
     else:
-        print(users)
-        
+        print("\nList of users below: \n")
+        for user in users:
+            print(f"username: {user['username']}")
+            print(f"email: {user['email']}")
+            print(f"country: {user['country']}")
+            
 # function to delete a user
+def delete_user(users):
+    username = input("\nEnter username to delete: ")
+    for user in users:
+        if username == user['username']:
+            users.remove(user)
+            print("delete successfully")
+            return
+        else:
+            print("user does not exist")
+            return
+    
+    
+    
 users = []
 while True:
     welcome()
@@ -37,5 +55,8 @@ while True:
         add_user(users)
     elif selection == "2":
         view_users(users)
+    elif selection == "3":
+        delete_user(users)
+        
         
 
